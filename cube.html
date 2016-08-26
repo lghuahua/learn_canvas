@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="./javascript/cube.js" type="text/javascript"></script>
+</title>
+</head>
+<body><div class="wrap">
+  <div class="cube">
+    <canvas id="cas"></canvas>
+  </div>
+ <script>
+  var canvas = document.getElementById("cas");
+  var ctx = canvas.getContext("2d");
+  var fallLength = 500; centerX = canvas.width/2 , centerY = canvas.height/2
+  var cube = new Cube({x: 0, y: 0, z: 0, length: 50})
+  var cube1 = new Cube({x: 60, y: 10, z: 20, length: 40})
+  function initAnimate(){
+    // cube.drawFace();
+
+    animate();
+  }
+
+  function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height)
+    var ax = 0.02;
+    var ay = 0.03;
+    cube1.rotate(ax, ay);
+    cube.rotate(-ax, ay);
+    cube.drawFace();
+    cube1.drawFace();
+    requestAnimationFrame(animate);
+  }
+  initAnimate();
+ </script>
+</body>
+</html>
