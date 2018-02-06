@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FlowersCurve</title>
+    <style>
+    </style>
+    <script src="./javascript/FlowersCurve.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+  <div class="option">
+    <label>颜色选择</label>
+    <input id="color" type="color" value="#2D9900"/>
+    <label>母尺半径</label>
+    <input id="big_radius" type="number"/>  
+    <label>子尺半径</label>
+    <input id="small_radius" type="number"/>   
+    <label>孔距</label>
+    <input id="radius" type="number"/>
+    <button class="draw" type="button" onclick="draw_curve()">绘制</button>
+  </div>
+  <canvas id="canvas"></canvas>
+  <script type="text/javascript">
+    function draw_curve(){
+      var big_radius = document.getElementById('big_radius').value  
+      var small_radius = document.getElementById('small_radius').value
+      var color = document.getElementById('color').value
+      var radius = document.getElementById('radius').value
+      var ctx = canvas.getContext('2d')
+      if(big_radius && small_radius && radius && color){
+        new FlowersCurve({ra:big_radius, rb:small_radius, rc:radius, color:color,ctx:ctx})
+      }
+    }
+    window.onload = function(){
+      var canvas = document.getElementById('canvas')
+      canvas.height = 1000;
+      canvas.width = 1000;
+      
+      draw_curve()
+    } 
+  </script>
+</body>
+</html>
